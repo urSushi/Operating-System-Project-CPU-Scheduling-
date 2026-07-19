@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulator | CPU Scheduling</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <nav class="topbar">
+      <div class="brand">CPU Scheduling Simulator</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#help">Help</a>
+        <button id="themeToggle" class="button button-toggle" aria-label="Toggle Theme"></button>
+      </div>
+    </nav>
+
+    <section class="simulator-panel" id="simulator">
+      <div class="panel-header">
+        <div>
+          <span class="eyebrow">Interactive Simulation</span>
+          <h1>Select Algorithm & Configure Processes</h1>
+          <p>Choose one of five scheduling algorithms. Add processes, set priorities, define quantum values, and visualize how the CPU runs each job.</p>
+        </div>
+      </div>
+
+      <form id="simulationForm" action="/result" method="post" class="glass-form">
+        <div class="form-row space-between">
+          <div class="field-group" style="width:100%;">
+            <label>Select Algorithm</label>
+            <div class="algorithm-grid">
+              <button type="button" class="algorithm-card" data-algo="fcfs">
+                <div class="algorithm-card__title">FCFS</div>
+                <div class="algorithm-card__description">First Come First Serve scheduling.</div>
+              </button>
+              <button type="button" class="algorithm-card" data-algo="sjf">
+                <div class="algorithm-card__title">SJF Non-Preemptive</div>
+                <div class="algorithm-card__description">Shortest job first without preemption.</div>
+              </button>
+              <button type="button" class="algorithm-card" data-algo="srtf">
+                <div class="algorithm-card__title">SJF Preemptive</div>
+                <div class="algorithm-card__description">Shortest remaining time first with preemption.</div>
+              </button>
+              <button type="button" class="algorithm-card" data-algo="priority">
+                <div class="algorithm-card__title">Priority Scheduling</div>
+                <div class="algorithm-card__description">Use priority values to determine execution order.</div>
+              </button>
+              <button type="button" class="algorithm-card" data-algo="round_robin">
+                <div class="algorithm-card__title">Round Robin</div>
+                <div class="algorithm-card__description">Give each process a time slice in rotation.</div>
+              </button>
+            </div>
+            <input type="hidden" name="algorithm" id="algorithmHidden" value="{{ selected_algorithm | default('') }}" required>
+            <div class="selected-algorithm" id="algorithmStatus">No algorithm selected</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field-group time-quantum-group hidden" id="quantumGroup">
+            <label for="quantumInput">Time Quantum</label>
+            <input type="number" min="1" id="quantumInput" name="quantum" placeholder="e.g. 3">
+          </div>
+        </div>
+
+        <div class="table-wrap hidden">
+          <div class="table-tools">
+            <div>
+              <button type="button" class="button button-secondary" id="addProcessBtn">Add Process</button>
+              <button type="button" class="button button-danger" id="resetBtn">Reset</button>
+            </div>
+            
+          </div>
+
+          <table class="process-table" id="processTable">
+            <thead>
+              <tr>
+                <th>Process</th>
+                <th>Arrival Time</th>
+                <th>Burst Time</th>
+                <th class="priority-column hidden">Priority</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <input type="hidden" name="process_data" id="processData">
+        <div class="form-actions hidden">
+          <button type="button" class="button button-primary" id="calculateBtn">Calculate Schedule</button>
+          <a class="button button-secondary" href="/">Back to Home</a>
+        </div>
+      </form>
+
+      <div class="help-panel" id="help">
+        <h2>How to use</h2>
+        <ol>
+          <li>Select a scheduling algorithm.</li>
+          <li>Add one or more processes.</li>
+          <li>Provide arrival time, burst time and optional priority.</li>
+          <li>Click Calculate to see the Gantt chart and ready queue flow.</li>
+        </ol>
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

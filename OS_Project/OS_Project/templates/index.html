@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CPU Scheduling Simulator</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="page-shell hero-shell">
+    <nav class="topbar">
+      <div class="brand">CPU Scheduling Simulator</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#algorithms">Algorithms</a>
+        <a href="#about">About Project</a>
+        <button id="themeToggle" class="button button-toggle" aria-label="Toggle Theme"></button>
+        <a class="button button-primary" href="/simulate">Start Simulation</a>
+      </div>
+    </nav>
+
+    <section class="hero-panel" id="home">
+      <div class="hero-copy">
+        <span class="eyebrow">Operating System Project</span>
+        <h1>CPU Scheduling Simulator</h1>
+        <p>Interactive simulation and visualization for FCFS, SJF, SRTF, Priority, and Round Robin scheduling.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/simulate">Launch Simulator</a>
+          <a class="button button-secondary" href="#algorithms">View Algorithms</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="cpu-chip">
+          <div class="cpu-visual">
+            <img src="/static/images/calc_process.svg" class="cpu-svg" alt="Calculating process illustration">
+          </div>
+        </div>
+        <div class="card-info">
+          <h2>CPU Scheduling</h2>
+          <p>Track ready queue states, explore preemption, and review a professional Gantt chart output.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-grid" id="algorithms">
+      <h2>Supported Algorithms</h2>
+      <div class="grid-cards">
+        <article class="feature-card">
+          <h3 class="feature-card__title">FCFS</h3>
+          <p class="feature-card__short">First Come First Serve scheduling with clear completion and waiting time analysis.</p>
+          <a class="feature-card__link" href="/algorithm/fcfs" aria-label="View FCFS details">
+            <span class="feature-card__arrow">→</span>
+          </a>
+        </article>
+        <article class="feature-card">
+          <h3 class="feature-card__title">SJF</h3>
+          <p class="feature-card__short">Shortest Job First scheduling without preemption for intelligent batch ordering.</p>
+          <a class="feature-card__link" href="/algorithm/sjf" aria-label="View SJF details">
+            <span class="feature-card__arrow">→</span>
+          </a>
+        </article>
+        <article class="feature-card">
+          <h3 class="feature-card__title">SRTF</h3>
+          <p class="feature-card__short">Shortest Remaining Time First for dynamic preemptive priority handling.</p>
+          <a class="feature-card__link" href="/algorithm/srtf" aria-label="View SRTF details">
+            <span class="feature-card__arrow">→</span>
+          </a>
+        </article>
+        <article class="feature-card">
+          <h3 class="feature-card__title">Priority Scheduling</h3>
+          <p class="feature-card__short">Priority-based scheduling with process ranking and accurate queue updates.</p>
+          <a class="feature-card__link" href="/algorithm/priority" aria-label="View Priority details">
+            <span class="feature-card__arrow">→</span>
+          </a>
+        </article>
+        <article class="feature-card">
+          <h3 class="feature-card__title">Round Robin</h3>
+          <p class="feature-card__short">Time-slice scheduling with queue rotation and step-by-step quantum execution.</p>
+          <a class="feature-card__link" href="/algorithm/round_robin" aria-label="View Round Robin details">
+            <span class="feature-card__arrow">→</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="about-panel" id="about">
+      <div class="about-copy">
+        <h2>Project Overview</h2>
+
+        <p><strong>CPU Scheduling Simulator Web Application</strong></p>
+
+        <p>The CPU Scheduling Simulator is a web-based application developed to simulate and visualize different CPU scheduling algorithms used in Operating Systems. The project helps users understand how processes are managed and executed by the CPU through interactive calculations, graphical representations, and ready queue visualization.</p>
+
+        <p>The simulator supports the following algorithms:</p>
+        <ul>
+          <li>FCFS (First Come First Serve)</li>
+          <li>SJF (Shortest Job First)</li>
+          <li>SRTF (Preemptive SJF)</li>
+          <li>Priority Scheduling</li>
+          <li>Round Robin Scheduling</li>
+        </ul>
+
+        <p>Users can select an algorithm, enter process information such as arrival time, burst time, priority, and time quantum, and generate scheduling results instantly.</p>
+
+        <p>The application displays:</p>
+        <ul>
+          <li>Gantt Chart visualization</li>
+          <li>Process execution table</li>
+          <li>Waiting Time and Turnaround Time</li>
+          <li>Average performance calculations</li>
+          <li>Ready Queue state at each execution step</li>
+        </ul>
+
+        <p>The project is developed using:</p>
+        <ul>
+          <li>Python Flask for backend scheduling logic</li>
+          <li>HTML, CSS, and JavaScript for frontend UI design</li>
+        </ul>
+
+        <p>The main objective of this project is to provide an attractive, user-friendly, and educational platform for learning CPU scheduling algorithms through real-time simulation and visualization.</p>
+      </div>
+      <div class="about-artifact">
+        <div class="glass-panel">
+          <h3>Why use it?</h3>
+          <p>Because understanding CPU scheduling becomes far easier and more engaging with real-time process simulation, animated Gantt chart visualization, live ready queue tracking, and a modern interactive dashboard. Instead of learning scheduling algorithms only through theory and calculations, this simulator allows users to visually observe how processes are executed, queued, preempted, and completed step by step in an intuitive and user-friendly environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="group-section">
+      <h2 class="group-title">Designed & Developed By:</h2>
+      <div class="members-grid">
+        <div class="member-card">
+          <div class="member-image has-photo">
+            <img src="/static/images/karimun_nahar_karima.jpeg" alt="Karimun Nahar Karima">
+          </div>
+          <h4 class="member-name">Karimun Nahar Karima</h4>
+          <p class="member-id">ID: 23549009046</p>
+        </div>
+        <div class="member-card">
+          <div class="member-image has-photo">
+            <img src="/static/images/didar_ibn_firoz.jpeg" alt="Didar Ibn Firoz">
+          </div>
+          <h4 class="member-name">Didar Ibn Firoz</h4>
+          <p class="member-id">ID: 23549009084</p>
+        </div>
+        <div class="member-card">
+          <div class="member-image has-photo">
+            <img src="/static/images/umma_marisha_eva.jpeg" alt="Umma Marisha Eva">
+          </div>
+          <h4 class="member-name">Umma Marisha Eva</h4>
+          <p class="member-id">ID: 23549009088</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

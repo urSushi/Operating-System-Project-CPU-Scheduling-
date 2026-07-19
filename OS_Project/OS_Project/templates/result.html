@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result | CPU Scheduling</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="page-shell result-shell">
+    <nav class="topbar">
+      <div class="brand">CPU Scheduling Simulator</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/simulate">New Simulation</a>
+        <button id="themeToggle" class="button button-toggle" aria-label="Toggle Theme"></button>
+      </div>
+    </nav>
+
+    <section class="result-panel">
+      <div class="result-header">
+        <span class="eyebrow">Simulation Complete</span>
+        <h1>{{ algorithm_name }}</h1>
+        {% if quantum %}
+        <p>Time Quantum: {{ quantum }}</p>
+        {% endif %}
+      </div>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h3>Average Waiting Time</h3>
+          <p>{{ result.average_waiting }}</p>
+        </div>
+        <div class="metric-card">
+          <h3>Average Turnaround</h3>
+          <p>{{ result.average_turnaround }}</p>
+        </div>
+        <div class="metric-card">
+          <h3>CPU Utilization</h3>
+          <p>{{ result.cpu_utilization }}%</p>
+        </div>
+        <div class="metric-card">
+          <h3>Throughput</h3>
+          <p>{{ result.throughput }} / unit</p>
+        </div>
+      </div>
+
+      <div class="chart-shell">
+        <div class="chart-header">
+          <h2>Gantt Chart</h2>
+        </div>
+        <div class="gantt-view" data-total-time="{{ result.total_time if result.total_time else 1 }}">
+          {% for segment in result.gantt %}
+          <div class="gantt-segment {% if segment.get('idle') %}idle{% endif %}" data-start="{{ segment.start }}" data-end="{{ segment.end }}" data-color="{% if segment.get('idle') %}#374151{% else %}{{ color_map.get(segment.pid, '#6f7dff') }}{% endif %}">
+            <span>{% if segment.get('idle') %}Idle{% else %}{{ segment.pid }}{% endif %}</span>
+            <small>{{ segment.start }} - {{ segment.end }}</small>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="data-grid">
+        <div class="table-card">
+          <h2>Process Table</h2>
+          <table class="result-table">
+            <thead>
+              <tr>
+                <th>Process</th>
+                <th>AT</th>
+                <th>BT</th>
+                <th>CT</th>
+                <th>TAT</th>
+                <th>WT</th>
+                <th>RT</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in result.process_table %}
+              <tr>
+                <td>{{ row.pid }}</td>
+                <td>{{ row.arrival }}</td>
+                <td>{{ row.burst }}</td>
+                <td>{{ row.completion }}</td>
+                <td>{{ row.turnaround }}</td>
+                <td>{{ row.waiting }}</td>
+                <td>{{ row.response }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="queue-card">
+          <h2>Ready Queue Timeline</h2>
+          <div class="queue-timeline">
+            {% for step in result.timeline %}
+            <div class="queue-step">
+              <span class="queue-time">Time {{ step.time }}:</span>
+              <div class="queue-items">
+                {% if step.queue %}
+                {% for item in step.queue %}
+                <span class="queue-chip">{{ item }}</span>
+                {% endfor %}
+                {% else %}
+                <span class="queue-chip empty">Idle</span>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <a href="/simulate" class="button button-primary">Run Another</a>
+        <a href="/" class="button button-secondary">Return Home</a>
+      </div>
+    </section>
+  </div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

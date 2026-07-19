@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#6f7dff"/>
+      <stop offset="1" stop-color="#42d6a4"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" rx="20" fill="url(#g)" opacity="0.18"/>
+  <g transform="translate(40,36)">
+    <rect x="8" y="8" width="312" height="188" rx="16" fill="#081322" opacity="0.9" />
+    <g transform="translate(24,24)">
+      <rect x="0" y="0" width="248" height="120" rx="10" fill="#0f1a2a"/>
+      <!-- animated bars representing processing -->
+      <g id="bars" transform="translate(12,18)">
+        <rect x="0" y="60" width="18" height="8" rx="3" fill="#7edeff">
+          <animate attributeName="height" values="8;56;8" dur="1.6s" repeatCount="indefinite" begin="0s" />
+          <animate attributeName="y" values="60;12;60" dur="1.6s" repeatCount="indefinite" begin="0s" />
+        </rect>
+        <rect x="28" y="60" width="18" height="8" rx="3" fill="#5e84ff">
+          <animate attributeName="height" values="8;40;8" dur="1.2s" repeatCount="indefinite" begin="0.2s" />
+          <animate attributeName="y" values="60;28;60" dur="1.2s" repeatCount="indefinite" begin="0.2s" />
+        </rect>
+        <rect x="56" y="60" width="18" height="8" rx="3" fill="#42d6a4">
+          <animate attributeName="height" values="8;48;8" dur="1.4s" repeatCount="indefinite" begin="0.4s" />
+          <animate attributeName="y" values="60;20;60" dur="1.4s" repeatCount="indefinite" begin="0.4s" />
+        </rect>
+        <rect x="84" y="60" width="18" height="8" rx="3" fill="#ff8f34">
+          <animate attributeName="height" values="8;36;8" dur="1s" repeatCount="indefinite" begin="0.6s" />
+          <animate attributeName="y" values="60;32;60" dur="1s" repeatCount="indefinite" begin="0.6s" />
+        </rect>
+        <rect x="112" y="60" width="18" height="8" rx="3" fill="#ff6d85">
+          <animate attributeName="height" values="8;52;8" dur="1.8s" repeatCount="indefinite" begin="0.8s" />
+          <animate attributeName="y" values="60;16;60" dur="1.8s" repeatCount="indefinite" begin="0.8s" />
+        </rect>
+      </g>
+      <!-- small status text -->
+      <text x="8" y="110" fill="#9fb8ff" font-size="12" font-family="Inter, sans-serif">Calculating process... </text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ algorithm.name }} — Algorithm Details</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="page-shell hero-shell">
+    <nav class="topbar">
+      <div class="brand">CPU Scheduling Simulator</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/simulate">Simulator</a>
+        <a href="#details">Algorithm Details</a>
+      </div>
+    </nav>
+
+    <section class="hero-panel hero-detail" id="details">
+      <div class="hero-copy">
+        <span class="eyebrow">Algorithm Reference</span>
+        <h1>{{ algorithm.name }}</h1>
+        <p class="feature-card__short">{{ algorithm.short }}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/simulate?algorithm={{ algorithm_code }}">Run {{ algorithm.name }}</a>
+          <a class="button button-secondary" href="/">Back to Home</a>
+        </div>
+      </div>
+      <div class="hero-card" style="padding: 32px; max-width: 680px;">
+        <div class="card-info">
+          <h2>Detailed Explanation</h2>
+          <div class="algorithm-detail">{{ algorithm.detail | safe }}</div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
